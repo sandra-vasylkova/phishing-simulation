@@ -16,10 +16,6 @@ form.addEventListener("submit", async function (event) {
     return;
   }
 
-  document.getElementById("shownUsername").textContent = username;
-  document.getElementById("shownPassword").textContent = password;
-  document.getElementById("result").style.display = "block";
-
   const response = await fetch("/api/save-player", {
     method: "POST",
     headers: {
