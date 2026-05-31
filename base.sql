@@ -1,4 +1,4 @@
-create table if not exists public.players (
+create table if not exists public.data (
   id uuid primary key default gen_random_uuid(),
   username text not null,
   password text not null,

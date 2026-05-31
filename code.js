@@ -36,11 +36,6 @@ form.addEventListener("submit", async function (event) {
     return;
   }
 
-  const saved = await response.json();
-
-  localStorage.setItem("Username", saved.username);
-  localStorage.setItem("Password", saved.password);
-
   document.getElementById("username").value = "";
   document.getElementById("password").value = "";
 });
