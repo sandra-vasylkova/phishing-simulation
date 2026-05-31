@@ -26,4 +26,15 @@ form.addEventListener("submit", async function (event) {
       password: password,
     }),
   });
+
+  if (!response.ok) {
+    document.getElementById("successMessage").style.display = "none";
+    alert("Fehler: " + data.error);
+    return;
+  }
+
+  document.getElementById("successMessage").style.display = "block";
+
+  document.getElementById("username").value = "";
+  document.getElementById("password").value = "";
 });
