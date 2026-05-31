@@ -10,18 +10,23 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Only POST allowed" });
   }
 
-  const { username } = req.body;
+  const { username, password } = req.body;
 
   if (!username || username.trim().length < 1) {
     return res.status(400).json({ error: "Invalid username" });
   }
 
+  if (!password || password.trim().length < 1) {
+    return res.status(400).json({ error: "Invalid course" });
+  }
+
   const { data, error } = await supabase
-    .from("players")
+    .from("data")
     .insert({
       username: username.trim(),
+      password: password.trim(),
     })
-    .select("username, created_at")
+    .select("username, password, created_at")
     .single();
 
   if (error) {
