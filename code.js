@@ -28,11 +28,20 @@ form.addEventListener("submit", async function (event) {
       }),
     });
 
-    const data = await response.json();
+    const text = await response.text();
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      data = { error: text };
+    }
+
+    console.log(response.status, data);
 
     if (!response.ok) {
       document.getElementById("successMessage").style.display = "none";
-      alert("Fehler: " + (data.error || "Unbekannter Fehler"));
+      alert("Fehler: " + data.error);
       return;
     }
 
