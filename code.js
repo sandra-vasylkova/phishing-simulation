@@ -30,12 +30,4 @@ form.addEventListener("submit", async function (event) {
       password: password,
     }),
   });
-
-  if (!response.ok) {
-    alert("Daten konnten nicht gespeichert werden.");
-    return;
-  }
-
-  document.getElementById("username").value = "";
-  document.getElementById("password").value = "";
 });
