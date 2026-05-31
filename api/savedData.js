@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   }
 
   if (!password || password.trim().length < 1) {
-    return res.status(400).json({ error: "Invalid course" });
+    return res.status(400).json({ error: "Invalid password" });
   }
 
   const { data, error } = await supabase
