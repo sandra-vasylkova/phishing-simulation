@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="code.js" defer></script>
     <title>Phishing Awareness Demo</title>
 
     <style>
@@ -109,7 +110,7 @@
       <form id="demoForm">
         <label for="username">Username</label>
         <input
-          id="username"
+          id="playerName"
           type="text"
           placeholder="Geben Sie Ihren Benutzernamen ein"
           required
@@ -138,24 +139,5 @@
 
       <p class="note">Die eingegebenen Daten werden nicht gespeichert.</p>
     </div>
-
-    <script>
-      const form = document.getElementById("demoForm");
-
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        document.getElementById("shownUsername").textContent = username;
-        document.getElementById("shownPassword").textContent = password;
-
-        document.getElementById("result").style.display = "block";
-
-        document.getElementById("username").value = "";
-        document.getElementById("password").value = "";
-      });
-    </script>
   </body>
 </html>
