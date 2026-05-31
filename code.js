@@ -26,4 +26,14 @@ form.addEventListener("submit", async function (event) {
       password: password,
     }),
   });
+
+  const data = await response.json();
+  console.log(response.status, data);
+
+  if (!response.ok) {
+    alert("Fehler: " + data.error);
+    return;
+  }
+
+  alert("Gespeichert.");
 });
