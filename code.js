@@ -16,25 +16,33 @@ form.addEventListener("submit", async function (event) {
     return;
   }
 
-  const response = await fetch("/api/savedData", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      username: username,
-      password: password,
-    }),
-  });
+  try {
+    const response = await fetch("/api/savedData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
 
-  if (!response.ok) {
+    const data = await response.json();
+
+    if (!response.ok) {
+      document.getElementById("successMessage").style.display = "none";
+      alert("Fehler: " + (data.error || "Unbekannter Fehler"));
+      return;
+    }
+
+    document.getElementById("successMessage").style.display = "block";
+
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+  } catch (error) {
+    console.error(error);
     document.getElementById("successMessage").style.display = "none";
-    alert("Fehler: " + data.error);
-    return;
+    alert("Verbindung zur API fehlgeschlagen.");
   }
-
-  document.getElementById("successMessage").style.display = "block";
-
-  document.getElementById("username").value = "";
-  document.getElementById("password").value = "";
 });
