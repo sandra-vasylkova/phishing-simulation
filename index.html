@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phishing Awareness Demo</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f2f4f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .card {
+        width: 360px;
+        background: white;
+        padding: 28px;
+        border-radius: 14px;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .subtitle {
+        color: #555;
+        font-size: 14px;
+        margin-bottom: 22px;
+      }
+
+      label {
+        display: block;
+        margin-top: 14px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 6px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #2563eb;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #1d4ed8;
+      }
+
+      .result {
+        display: none;
+        margin-top: 24px;
+        padding: 16px;
+        background: #fee2e2;
+        border: 1px solid #fca5a5;
+        color: #7f1d1d;
+        border-radius: 10px;
+        font-size: 14px;
+      }
+
+      .result strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .data {
+        margin-top: 10px;
+        padding: 10px;
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #fecaca;
+        word-break: break-word;
+      }
+
+      .note {
+        margin-top: 18px;
+        font-size: 12px;
+        color: #777;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>School Portal Login</h1>
+      <p class="subtitle">Bitte bestätigen Sie Ihre Identität.</p>
+
+      <form id="demoForm">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          placeholder="Geben Sie Ihren Benutzernamen ein"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Geben Sie Ihr Passwort ein"
+          required
+        />
+
+        <button type="submit">Anmelden</button>
+      </form>
+
+      <div id="result" class="result">
+        <strong>Ergebnis der Phishing-Simulation:</strong>
+        Eine echte Phishing-Seite könnte nun die von Ihnen eingegebenen Daten
+        abfangen.
+
+        <div class="data">Username: <span id="shownUsername"></span></div>
+
+        <div class="data">Password: <span id="shownPassword"></span></div>
+      </div>
+
+      <p class="note">Die eingegebenen Daten werden nicht gespeichert.</p>
+    </div>
+
+    <script>
+      const form = document.getElementById("demoForm");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        document.getElementById("shownUsername").textContent = username;
+        document.getElementById("shownPassword").textContent = password;
+
+        document.getElementById("result").style.display = "block";
+
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+      });
+    </script>
+  </body>
+</html>
